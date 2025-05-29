@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: light --default, emerald;
+}
+@plugin "daisyui/theme" {
+  name: "emerald";
+  default: true;
+  --color-primary: #128f8b;
+  --color-primary-content: #ffffff;
+  --progress-neutral: #128f8b;
+}

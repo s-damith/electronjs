@@ -10,8 +10,8 @@ jobs:
       matrix:
         os:
           [
-            { name: 'linux', image: 'ubuntu-latest' },
-            { name: 'windows', image: 'windows-latest' },
+            # { name: 'linux', image: 'ubuntu-latest' },
+            # { name: 'windows', image: 'windows-latest' },
             { name: 'macos', image: 'macos-latest' },
           ]
     runs-on: ${{ matrix.os.image }}
@@ -22,6 +22,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+
+      - name: Install web-app dependencies
+        working-directory: ./web_app
+        run: npm ci
+      - name: Build web-app
+        working-directory: ./web_app
+        run: npm run build
+
       - run: npm ci
       - name: Publish app
         env:
